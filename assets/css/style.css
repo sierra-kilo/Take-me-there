@@ -1,0 +1,21 @@
+.top {
+    background: black;
+    /*width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;*/
+}
+.center-button {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    /*background: black;*/
+}
+
+.btn-xl {
+    min-width: 50%;
+    font-size: 70px;
+}
+
+.dropdown-item {
+    font-size: 43px;
+}
