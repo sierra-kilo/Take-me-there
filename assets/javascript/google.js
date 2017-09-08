@@ -1,32 +1,42 @@
-var authKey = "AIzaSyBk8YUrhUQ0_p8jmX5cEkag69N5Xhftxh8";
+var map;
+var infowindow;
 
-// These variables will hold the results we get from the user's inputs via HTML
-var types = "bar";
-var location = '';
-var numResults = 0;
-var radius = '5000'
+function initMap() {
+    var berkeley = {lat: 37.869024, lng: -122.267053};
+
+    map = new google.maps.Map($('.map'), {
+        center: berkeley,
+        zoom: 15
+    });
+
+    infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+        location: berkeley,
+        radius: 5000,
+        type: ['bar']
+    }, callback);
+}
+
+function callback(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+        }
+    console.log(results);
+    }
+}
 
 
+function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
 
-// queryURLBase is the start of our API endpoint. The searchTerm will be appended to this when
-// the user hits the search button
-var queryURLBase =
-'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.867766, -122.251984&radius=500&types=food&key=' + authKey
-
-
-// FUNCTIONS
-// ==========================================================
-
-$( document ).ready(function() {
-
-  // The AJAX function uses the queryURL and GETS the JSON data associated with it.
-  // The data then gets stored in the variable called: "NYTData"
-
-  $.ajax({
-    url: queryURLBase,
-    method: "GET"
-}).done(function(places) {
-    console.log(places);
-  });
-
-})
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+    });
+}
