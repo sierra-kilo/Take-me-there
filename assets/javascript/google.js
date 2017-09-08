@@ -1,6 +1,7 @@
 var map;
 var infowindow;
 
+
 function initMap() {
     var berkeley = {lat: 37.869024, lng: -122.267053};
 
