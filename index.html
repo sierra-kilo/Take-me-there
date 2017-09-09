@@ -80,6 +80,12 @@ var lngStart = -122.253574;
 var latStartText = latStart.toString();
 var lngStartText = lngStart.toString();
 var keyword = ['whiskey'];
+navigator.geolocation.getCurrentPosition(function(position) {
+    latStart = position.coords.latitude;
+    lngStart = position.coords.longitude;
+    latStartText = latStart.toString();
+    lngStartText = lngStart.toString();
+});
 var radius = 50000;
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
