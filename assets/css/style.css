@@ -266,14 +266,16 @@ li.task:first-child {
 }
 #map {
     display: inline-block;
-    height: 50vh;
-    width: 50%;
+    height: 30vh;
+    width: 100%;
 }
 #info {
     display: inline;
     float: right;
-    height: 50vh;
-    width: 50%;
+    height: 30vh;
+    width: 100%;
+    background: black;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 #uber {
     display: inline-block;
