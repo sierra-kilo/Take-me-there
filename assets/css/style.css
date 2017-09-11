@@ -1,3 +1,43 @@
+body {
+    background-image: url('../img/bar.jpeg');
+}
+
+.container-fluid {
+    background: black;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.section {
+    display: block;
+    color: white;
+    height: 20%;
+}
+
+.btn {
+    width: 25%;
+    font-size: 50px;
+    opacity: 1 !important;
+}
+
+.btn-group {
+    opacity: .8;
+    width: 100%;
+}
+
+.bars {
+    height: 20%;
+}
+
+.bar-buttons {
+    min-width: 20%;
+    max-width: 20%;
+    font-size: 40px;
+    background: black;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 150px;
+    color: white;
+}
+
 #taskbar {
     background-color: rgba(0, 0, 0, .70);
     height: 142px;
