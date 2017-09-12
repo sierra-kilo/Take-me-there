@@ -1,31 +1,26 @@
-﻿var randNum = Math.floor((Math.random() * 20) + 1);
-var latStart = localStorage.getItem('latStart');
-console.log(latStart);
-var lngStart = localStorage.getItem('lngStart');
-console.log(lngStart);
+var resultList = [];
+var latStart = parseFloat(localStorage.getItem('latStart'));
+var lngStart = parseFloat(localStorage.getItem('lngStart'));
 var latStartText = localStorage.getItem('latStartText');
-console.log(latStartText);
 var lngStartText = localStorage.getItem('lngStartText');
-console.log(lngStartText);
-var keyword = ['whiskey'];
+var radius = parseInt(localStorage.getItem('radius'));
+var keyword = [];
 var name = "";
 var address = "";
-var priceLevel = localStorage.getItem('maxPrice');
-console.log(priceLevel);
-var rating = localStorage.getItem('minRating');
-console.log(rating);
+var priceLevel = parseInt(localStorage.getItem('maxPrice'));
+var rating = parseInt(localStorage.getItem('minRating'));
 var isOpen = "";
-var radius = localStorage.getItem('radius');
-console.log(radius);
 var map;
 var infowindow;
 var recommendation;
+var randNum;
+
 
 
 function initMap() {
     var location = {};
-    location.lat = parseInt(latStart);
-    location.lng = parseInt(lngStart);
+    location.lat = latStart;
+    location.lng = lngStart;
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: location,
@@ -47,28 +42,34 @@ function initMap() {
 function callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
 
-        function getRecommendation(results, status) {
+        resultList = results
+        console.log('this is the results list')
+        console.log(resultList);
+        randNum = Math.floor((Math.random() * resultList.length));
+        console.log(randNum);
+
+        function getRecommendation() {
             test = results[randNum]
-            if (test.rating > minRating) {
+            if (test.rating > rating) {
                 recommendation = test
                 console.log('this is the recommendation');
                 console.log(recommendation)
                 return recommendation
             } else {
-                return getRecommendation(results, status)
+                return getRecommendation()
             }
         }
-        recommendation = getRecommendation(results, status)
+        recommendation = getRecommendation()
         // shant change 1
         // createMarker(results[randNum]);
         createMarker(recommendation);
 
 
-        name = results[randNum].name;
-        address = results[randNum].vicinity;
-        priceLevel = results[randNum].price_level;
-        rating = results[randNum].rating;
-        isOpen = results[randNum].opening_hours;
+        name = recommendation.name;
+        address = recommendation.vicinity;
+        priceLevel = recommendation.price_level;
+        rating = recommendation.rating;
+        isOpen = recommendation.opening_hours;
         isOpen = isOpen.open_now;
 
         if (isOpen === true) {
@@ -76,9 +77,7 @@ function callback(results, status) {
         } else {
             isOpen = 'Closed';
         }
-        var resultList = results
-        console.log('this is the results list')
-        console.log(resultList);
+
         // console.log(name);
         // console.log(address);
         // console.log(priceLevel);
