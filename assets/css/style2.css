@@ -1,0 +1,226 @@
+#taskbar {
+    background-color: rgba(0, 0, 0, .70);
+    height: 142px;
+    padding: 24px 0;
+    text-align: center;
+}
+#taskbar .inner {
+    margin: 0 auto
+}
+#taskbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+#taskbar li {
+    margin: 0 auto;
+
+}
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+input {
+    font-family: sans-serif;
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle;
+    line-height: normal
+}
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+.inner {
+    margin: 0 auto
+}
+.task {
+    width: 20%;
+    float: left;
+    padding: 8px 10px;
+    border-left: 1px solid rgba(256, 256, 256, 0.3);
+}
+li.task:first-child {
+    border-left: none
+}
+.taskContentWrapper {
+    display: none
+}
+.task a {
+    color: #FFF;
+    display: block;
+    font-size: 35px;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    padding-top: 50px;
+    transition: all 500ms linear 0s
+}
+.task div.taskSecondstate {
+    color: #FFF;
+    display: block;
+    font: 15px/22px verdana;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 1px;
+    transition: all 500ms linear 0s
+}
+.taskContentWrapper div.taskSecondstate {
+    margin: 0 auto
+}
+.task a.activeState {
+    padding-top: 0
+}
+.task div.activeState {
+    padding-top: 1px
+}
+.task:hover a, .task a:focus {
+    text-decoration: underline
+}
+.task div.taskSecondstate:hover, .task div.taskSecondstate:focus {
+    text-decoration: underline;
+    cursor: pointer
+}
+.task div.activeState:focus {
+    text-decoration: none
+}
+.taskImageContainer {
+    width:100%;
+}
+.task:hover img {
+    -webkit-transform: scale(1.15);
+    -moz-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    -o-transform: scale(1.15);
+    transform: scale(1.15)
+}
+.task span {
+    display: block
+}
+.taskHiddenContent {
+    display: none;
+    margin-top: 20px
+}
+.task input, .task select {
+    border: 0 none;
+    height: 20px;
+    font: 12px verdana;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+.task input {
+    padding: 0 9px
+}
+.task input[type="submit"]:focus, .task input[type="submit"]:hover {
+    text-decoration: underline
+}
+.task input[type="submit"] {
+    border: 0 none;
+    font-family: verdana;
+    font-weight: bold;
+    height: 22px;
+    background-color: #00698c;
+    border-radius: 2px;
+    color: #fff;
+    margin-left: 5px;
+    width: auto
+}
+li.task:first-child {
+    border-left: none
+}
+.taskContentWrapper {
+    display: none
+}
+
+.task div.taskSecondstate {
+    color: #FFF;
+    display: block;
+    font: 15px/22px verdana;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 1px;
+    transition: all 500ms linear 0s
+}
+.task a.activeState {
+    padding-top: 0
+}
+.task div.activeState {
+    padding-top: 1px
+}
+.task:hover a, .task a:focus {
+    text-decoration: underline
+}
+.task div.taskSecondstate:hover, .task div.taskSecondstate:focus {
+    text-decoration: underline;
+    cursor: pointer
+}
+.task div.activeState:focus {
+    text-decoration: none
+}
+.taskImageContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0
+}
+.task:hover img {
+    -webkit-transform: scale(1.15);
+    -moz-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    -o-transform: scale(1.15);
+    transform: scale(1.15)
+}
+.task div.taskContentWrapper img {
+    height: 40px;
+    width: 40px;
+}
+.task span {
+    display: block
+}
+.taskHiddenContent {
+    display: none;
+    margin-top: 20px
+}
+.task input, .task select {
+    border: 0 none;
+    height: 20px;
+    font: 12px verdana;
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: 126px
+}
+.task input {
+    padding: 0 9px
+}
+.task input[type="submit"]:focus, .task input[type="submit"]:hover {
+    text-decoration: underline
+}
+.task input[type="submit"] {
+    border: 0 none;
+    font-family: verdana;
+    font-weight: bold;
+    height: 22px;
+    background-color: #00698c;
+    border-radius: 2px;
+    color: #fff;
+    margin-left: 5px;
+    width: auto
+}
+.taskContentWrapper {
+    display: none
+}
+#map {
+    display: inline-block;
+    height: 50vw;
+    width: 100%;
+}
+#info {
+    display: inline;
+    float: left;
+    width: 50%;
+}

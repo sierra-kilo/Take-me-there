@@ -15,13 +15,15 @@
 <body class="splash">
     <div class="container-fluid">
         <div class="section header">
-            <h1>Take me there!</h1>
-            <h3>
-                <li>A mobile web app to take you and your friends</li>
-                <li>to a near by bar without the hastle</li>
-                <li>call an uber or a lyft, directly from the app</li>
-                <li>no hassel choices</li>
-            </h3>
+            <h1>Let get you Drinking!</h1>
+            <h2>
+                Choose a radius
+                <br>
+                Choose a minimum rating
+                <br>
+                Choose a maximum price range
+                <br>
+            </h2>
             <br>
         </div>
         <div class="section distance">
@@ -46,18 +48,15 @@
         <div class="section min-rating">
             <h1>Minimum Rating</h1>
             <!-- starts here  -->
-            <div class="btn-group rating-range" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                    <input type="radio" name="options" id="option1" autocomplete="off" checked> 2 - &#11088
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary" style="width: 33%">
+                    <input type="radio" name="options" id="option2" autocomplete="off">&#11088&#11088&#11088
                 </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> 3 - &#11088
+                <label class="btn btn-primary" style="width: 33%">
+                    <input type="radio" name="options" id="option3" autocomplete="off">&#11088&#11088&#11088&#11088
                 </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> 4 - &#11088
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option4" autocomplete="off"> 5 - &#11088
+                <label class="btn btn-primary" style="width: 33%">
+                    <input type="radio" name="options" id="option4" autocomplete="off">&#11088&#11088&#11088&#11088&#11088
                 </label>
             </div>
         </div>
@@ -92,61 +91,9 @@
 
         </div>
         <br>
-        <div class="section bars">
-            <!-- bar buttons here -->
-            <div id="taskbar" style="bottom: 0px;">
-                <div class="inner">
-                    <ul>
-                        <li class="task">
-                            <div class="iaRendered">
-                                <div class="taskContentWrapper" style="display: block;">
-                                    <a href="main.html">
-                                    <div class="taskImageContainer"><img alt="" src="https://www04.wellsfargomedia.com/assets/images/homepage/wfi111_ic_nba_default3_50x50.png"></div>Dive</a>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="task">
-                            <div class="iaRendered">
-                                <div class="taskContentWrapper" style="display: block;">
-                                    <a href="">
-                                    <div class="taskImageContainer"><img alt="" src="https://www04.wellsfargomedia.com/assets/images/homepage/wfi111_ic_nba_default3_50x50.png"></div>Cocktail</a>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="task">
-                            <div class="iaRendered">
-                                <div class="taskContentWrapper" style="display: block;">
-                                    <a href="">
-                                    <div class="taskImageContainer"><img alt="" src="https://www04.wellsfargomedia.com/assets/images/homepage/wfi111_ic_nba_default3_50x50.png"></div>Whiskey</a>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="task">
-                            <div class="iaRendered">
-                                <div class="taskContentWrapper" style="display: block;">
-                                    <a href="">
-                                    <div class="taskImageContainer"><img alt="" src="https://www04.wellsfargomedia.com/assets/images/homepage/wfi111_ic_nba_default3_50x50.png"></div>Patio</a>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="task">
-                            <div class="iaRendered">
-                                <div class="taskContentWrapper" style="display: block;">
-                                    <a href="">
-                                    <div class="taskImageContainer"><img alt="" src="https://www04.wellsfargomedia.com/assets/images/homepage/wfi111_ic_nba_default3_50x50.png"></div>Rooftop</a>
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
+        <div class="btn btn-primary">
+            <button type="button" name="button">Submit</button>
         </div>
-    </div>
     <!-- <script type="text/javascript">
         navigator.geolocation.getCurrentPosition(function(position) {
         latStart = position.coords.latitude;
