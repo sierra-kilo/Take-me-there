@@ -33,16 +33,16 @@
             <!-- distance buttons here -->
             <div class="btn-group distance-range" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                    <input type="radio" name="options" id="option1" autocomplete="off" checked> 1 mi
+                    <input type="radio" value="1609" name="distance" id="option1" autocomplete="off" checked> 1 mi
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> 3 mi
+                    <input type="radio" value="4830" name="distance" id="option2" autocomplete="off"> 3 mi
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> 5 mi
+                    <input type="radio" value="8050" name="distance" id="option3" autocomplete="off"> 5 mi
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option4" autocomplete="off"> 10 mi
+                    <input type="radio" value="16100" name="distance" id="option4" autocomplete="off"> 10 mi
                 </label>
             </div>
         </div>
@@ -51,14 +51,14 @@
             <h1>Minimum Rating</h1>
             <!-- starts here  -->
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary" style="width: 33%">
-                    <input type="radio" name="options" id="option2" autocomplete="off">&#11088&#11088&#11088
+                <label class="btn btn-primary active" style="width: 33%">
+                    <input type="radio" value="3" name="stars" id="option2" autocomplete="off">&#11088&#11088&#11088
                 </label>
                 <label class="btn btn-primary" style="width: 33%">
-                    <input type="radio" name="options" id="option3" autocomplete="off">&#11088&#11088&#11088&#11088
+                    <input type="radio" value="4" name="stars" id="option3" autocomplete="off">&#11088&#11088&#11088&#11088
                 </label>
                 <label class="btn btn-primary" style="width: 33%">
-                    <input type="radio" name="options" id="option4" autocomplete="off">&#11088&#11088&#11088&#11088&#11088
+                    <input type="radio" value="5" name="stars" id="option4" autocomplete="off">&#11088&#11088&#11088&#11088&#11088
                 </label>
             </div>
         </div>
@@ -68,16 +68,16 @@
             <!-- price range here -->
             <div class="btn-group price-range" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                    <input type="radio" name="options" id="option1" autocomplete="off" checked> $
+                    <input type="radio" value="1" name="dollars" id="option1" autocomplete="off" checked> $
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> $$
+                    <input type="radio" value="2" name="dollars" id="option2" autocomplete="off"> $$
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> $$$
+                    <input type="radio" value="3" name="dollars" id="option3" autocomplete="off"> $$$
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option4" autocomplete="off"> $$$$
+                    <input type="radio" value="4" name="dollars" id="option4" autocomplete="off"> $$$$
                 </label>
             </div>
         </div>
@@ -93,27 +93,9 @@
 
         </div>
         <br>
-        <div class="btn btn-primary">
-            <button type="button" name="button">Submit</button>
-        </div>
-<<<<<<< HEAD
-=======
+        <a href="main.html"><button class="btn btn-primary" type="button" name="submit">Submit</button></a>
     </div>
-
->>>>>>> 1cad965819eb4752df6b50e6304f026605052c7a
-    <!-- <script type="text/javascript">
-        var latStart;
-        var lngStart;
-        var latStartText;
-        var lngStartText;
-
-        navigator.geolocation.getCurrentPosition(function(position) {
-        latStart = position.coords.latitude;
-        lngStart = position.coords.longitude;
-        latStartText = latStart.toString();
-        lngStartText = lngStart.toString();
-        });
-        </script> -->
-
+    <script src="assets/javascript/geo.js" charset="utf-8"></script>
+    <script src="assets/javascript/submit.js" charset="utf-8"></script>
 </body>
 </html>

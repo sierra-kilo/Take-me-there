@@ -12,13 +12,11 @@ var isOpen = "";
 var radius = 50000;
 var map;
 var infowindow;
-
+var recommendation;
 
 
 
 function initMap() {
-
-
     var location = {};
     location.lat = latStart;
     location.lng = lngStart;
@@ -42,8 +40,23 @@ function initMap() {
 
 function callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-        createMarker(results[randNum]);
-                
+
+        function getRecommendation(results, status) {
+            test = results[randNum]
+            if (test.rating > 4) {
+                recommendation = test
+                console.log('this is the recommendation');
+                console.log(recommendation)
+                return recommendation
+            } else {
+                return getRecommendation(results, status)
+            }
+        }
+        recommendation = getRecommendation(results, status)
+        // shant change 1
+        // createMarker(results[randNum]);
+        createMarker(recommendation);
+
 
         name = results[randNum].name;
         address = results[randNum].vicinity;
@@ -57,12 +70,14 @@ function callback(results, status) {
         } else {
             isOpen = 'Closed';
         }
-        console.log(results);
-        console.log(name);
-        console.log(address);
-        console.log(priceLevel);
-        console.log(rating);
-        console.log(isOpen);
+        var resultList = results
+        console.log('this is the results list')
+        console.log(resultList);
+        // console.log(name);
+        // console.log(address);
+        // console.log(priceLevel);
+        // console.log(rating);
+        // console.log(isOpen);
         $("#info").append("<p style='margin:0px;'>"
             + name
             + "<br> Address: "
@@ -169,77 +184,77 @@ function callback(results, status) {
 
             //Uber Cost Ajax Call
 
-            $.ajax({
-                url: 'https://api.uber.com/v1.2/estimates/price?start_latitude=' + latStartText + '&start_longitude=' + lngStartText + '&end_latitude=' + geoCodedlat + '&end_longitude=' + geoCodedlng,
-                type: 'GET',
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Authorization", "Token PFQZ7tdwz7A1HQCxtT4mGR041x_2wgpUtoIdF7gE");
-                },
-                success: function(response) {
-                    console.log(response);
-                },
-                error: function(error) {
-                    console.log(error);
-                }
-            }).done(function(response) {
-
-                var uberResults = response;
-                var uberCost = uberResults.prices[7].high_estimate;
-                var uberRideType = uberResults.prices[7].display_name;
-                var clientID = "WLapzhw1SD52gflntO7MI5QyiyQCKKeS"
-                var deepLink = "https://m.uber.com/ul/?client_id="
-                    + clientID
-                    + "&action=setPickup&pickup[latitude]="
-                    + latStartText
-                    + "&pickup[longitude]=" 
-                    + lngStartText
-                    + "&pickup[nickname]=Current&dropoff[latitude]=" 
-                    + geoCodedlat 
-                    + "&dropoff[longitude]=" 
-                    + geoCodedlng + "&dropoff[nickname]="
-                    + name
-                    + "[formatted_address]=" 
-                    + address
-                    + "&product_id=a1111c8c-c720-46c3-8534-2fcdd730040d&link_text=View%20team%20roster&partner_deeplink=partner%3A%2F%2Fteam%2F9383"
-
-                console.log(uberCost);
-                console.log(uberRideType);
-
-                
-
-                $("#uber").html("<a style='color:black;' href='"
-                    + deepLink
-                    + "'><img align='left' style='width:100px; padding-top: 5px; display:block;' src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Uber_App_Icon.svg/240px-Uber_App_Icon.svg.png'/> <p style='margin:0px; display: inline-block; padding-left:25px;' id='uber-info'> Cost: $"
-                    + uberCost + "<br>Type: "
-                    + uberRideType
-                    + "</p></a>");
-
-                //Uber ETA Ajax Call
-
-                $.ajax({
-                    url: 'https://api.uber.com/v1.2/estimates/time?start_latitude=' + latStartText + '&start_longitude=' + lngStartText,
-                    type: 'GET',
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader("Authorization", "Token PFQZ7tdwz7A1HQCxtT4mGR041x_2wgpUtoIdF7gE");
-                    },
-                    success: function(response) {
-                        console.log(response);
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
-                }).done(function(response) {
-
-                    var uberResults = response;
-                    var uberTime = uberResults.times[6].estimate;
-                    var uberRideType = uberResults.times[6].display_name;
-
-                    console.log(uberTime);
-                    console.log(uberRideType);
-
-                    $("#uber-info").append("<br> ETA: " + uberTime / 60 + " Minutes")
-                });
-            });
+            // $.ajax({
+            //     url: 'https://api.uber.com/v1.2/estimates/price?start_latitude=' + latStartText + '&start_longitude=' + lngStartText + '&end_latitude=' + geoCodedlat + '&end_longitude=' + geoCodedlng,
+            //     type: 'GET',
+            //     beforeSend: function(xhr) {
+            //         xhr.setRequestHeader("Authorization", "Token PFQZ7tdwz7A1HQCxtT4mGR041x_2wgpUtoIdF7gE");
+            //     },
+            //     success: function(response) {
+            //         console.log(response);
+            //     },
+            //     error: function(error) {
+            //         console.log(error);
+            //     }
+            // }).done(function(response) {
+            //
+            //     var uberResults = response;
+            //     var uberCost = uberResults.prices[7].high_estimate;
+            //     var uberRideType = uberResults.prices[7].display_name;
+            //     var clientID = "WLapzhw1SD52gflntO7MI5QyiyQCKKeS"
+            //     var deepLink = "https://m.uber.com/ul/?client_id="
+            //         + clientID
+            //         + "&action=setPickup&pickup[latitude]="
+            //         + latStartText
+            //         + "&pickup[longitude]="
+            //         + lngStartText
+            //         + "&pickup[nickname]=Current&dropoff[latitude]="
+            //         + geoCodedlat
+            //         + "&dropoff[longitude]="
+            //         + geoCodedlng + "&dropoff[nickname]="
+            //         + name
+            //         + "[formatted_address]="
+            //         + address
+            //         + "&product_id=a1111c8c-c720-46c3-8534-2fcdd730040d&link_text=View%20team%20roster&partner_deeplink=partner%3A%2F%2Fteam%2F9383"
+            //
+            //     console.log(uberCost);
+            //     console.log(uberRideType);
+            //
+            //
+            //
+            //     $("#uber").html("<a style='color:black;' href='"
+            //         + deepLink
+            //         + "'><img align='left' style='width:100px; padding-top: 5px; display:block;' src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Uber_App_Icon.svg/240px-Uber_App_Icon.svg.png'/> <p style='margin:0px; display: inline-block; padding-left:25px;' id='uber-info'> Cost: $"
+            //         + uberCost + "<br>Type: "
+            //         + uberRideType
+            //         + "</p></a>");
+            //
+            //     //Uber ETA Ajax Call
+            //
+            //     $.ajax({
+            //         url: 'https://api.uber.com/v1.2/estimates/time?start_latitude=' + latStartText + '&start_longitude=' + lngStartText,
+            //         type: 'GET',
+            //         beforeSend: function(xhr) {
+            //             xhr.setRequestHeader("Authorization", "Token PFQZ7tdwz7A1HQCxtT4mGR041x_2wgpUtoIdF7gE");
+            //         },
+            //         success: function(response) {
+            //             console.log(response);
+            //         },
+            //         error: function(error) {
+            //             console.log(error);
+            //         }
+            //     }).done(function(response) {
+            //
+            //         var uberResults = response;
+            //         var uberTime = uberResults.times[6].estimate;
+            //         var uberRideType = uberResults.times[6].display_name;
+            //
+            //         console.log(uberTime);
+            //         console.log(uberRideType);
+            //
+            //         $("#uber-info").append("<br> ETA: " + uberTime / 60 + " Minutes")
+            //     });
+            // });
         });
     }
 }
@@ -256,7 +271,3 @@ function createMarker(place) {
         infowindow.open(map, this);
     });
 }
-
-
-
-    
