@@ -50,6 +50,7 @@ function callback(results, status) {
 
         function getRecommendation() {
             test = results[randNum]
+            console.log(test);
             if (test.rating > rating) {
                 recommendation = test
                 console.log('this is the recommendation');
