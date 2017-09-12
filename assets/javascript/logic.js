@@ -1,25 +1,31 @@
 ﻿var randNum = Math.floor((Math.random() * 20) + 1);
-var latStart = 37.825256;
-var lngStart = -122.253574;
-var latStartText = latStart.toString();
-var lngStartText = lngStart.toString();
+var latStart = localStorage.getItem('latStart');
+console.log(latStart);
+var lngStart = localStorage.getItem('lngStart');
+console.log(lngStart);
+var latStartText = localStorage.getItem('latStartText');
+console.log(latStartText);
+var lngStartText = localStorage.getItem('lngStartText');
+console.log(lngStartText);
 var keyword = ['whiskey'];
 var name = "";
 var address = "";
-var priceLevel = "";
-var rating = "";
+var priceLevel = localStorage.getItem('maxPrice');
+console.log(priceLevel);
+var rating = localStorage.getItem('minRating');
+console.log(rating);
 var isOpen = "";
-var radius = 50000;
+var radius = localStorage.getItem('radius');
+console.log(radius);
 var map;
 var infowindow;
 var recommendation;
 
 
-
 function initMap() {
     var location = {};
-    location.lat = latStart;
-    location.lng = lngStart;
+    location.lat = parseInt(latStart);
+    location.lng = parseInt(lngStart);
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: location,
@@ -43,7 +49,7 @@ function callback(results, status) {
 
         function getRecommendation(results, status) {
             test = results[randNum]
-            if (test.rating > 4) {
+            if (test.rating > minRating) {
                 recommendation = test
                 console.log('this is the recommendation');
                 console.log(recommendation)
