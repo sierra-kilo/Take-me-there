@@ -15,6 +15,19 @@ var infowindow;
 var recommendation;
 var randNum;
 
+$('.btn[name=submit]').click(function() {
+
+    var radius = $("input[name='distance']:checked").val();
+    localStorage.setItem("radius", radius);
+    console.log(radius);
+    var minRating = $("input[name='stars']:checked").val();
+    localStorage.setItem("minRating", minRating);
+    console.log(minRating);
+    var maxPrice = $("input[name='dollars']:checked").val();
+    localStorage.setItem("maxPrice", maxPrice);
+    console.log(maxPrice);
+
+});
 
 
 function initMap() {
@@ -48,22 +61,21 @@ function callback(results, status) {
 
         function getRecommendation() {
             randNum = Math.floor((Math.random() * resultList.length));
-            test = results[randNum];
+            var test = results[randNum];
             console.log(test);
             if (test.rating > rating) {
-                recommendation = test
+                recommendation = test;
                 console.log('this is the recommendation');
                 console.log(recommendation)
                 return recommendation
             } else {
-                getRecommendation()
+                getRecommendation();
             }
         }
         recommendation = getRecommendation()
         // shant change 1
         // createMarker(results[randNum]);
         createMarker(recommendation);
-
 
         name = recommendation.name;
         address = recommendation.vicinity;
@@ -83,7 +95,7 @@ function callback(results, status) {
         // console.log(priceLevel);
         // console.log(rating);
         // console.log(isOpen);
-        $("#info").append("<p style='margin:0px;'>"
+        $("#info").html("<p style='margin:0px;'>"
             + name
             + "<br> Address: "
             + address
@@ -112,10 +124,6 @@ function callback(results, status) {
 
             console.log(geoCodedlat);
             console.log(geoCodedlng);
-
-
-
-
 
             //Lyft Cost Ajax Call
 
@@ -148,14 +156,15 @@ function callback(results, status) {
                     + partnerID
                     + "&destination[latitude]="
                     + geoCodedlat
-                    + "&destination[longitude]=";
+                    + "&destination[longitude]="
+                    + geoCodedlng;
 
                 console.log(lyftCost + 'cents');
                 console.log(lyftRideType);
 
-                $("#lyft").html("<a style='color:white;' href='"
+                $("#lyft").html("<a style='color:black;' href='"
                     + deepLinkLyft
-                    + "'> <img align='left' style='width:100px; padding-top: 5px; display:block;' src='https://qph.ec.quoracdn.net/main-qimg-4dba731b22a3bcac0a4b778159ec6ac9'/> <p style='margin:0px; display: inline-block; padding-left:25px;' id='lyftInfo'>Cost: $"
+                    + "'> <p style='margin:0px; display: inline-block; padding-left:25px;' id='lyftInfo'>Cost: $"
                     + lyftCost / 100 + "<br> Type: "
                     + lyftRideType
                     + "</p></a>");
@@ -229,7 +238,7 @@ function callback(results, status) {
 
                 $("#uber").html("<a style='color:black;' href='"
                     + deepLink
-                    + "'><img align='left' style='width:100px; padding-top: 5px; display:block;' src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Uber_App_Icon.svg/240px-Uber_App_Icon.svg.png'/> <p style='margin:0px; display: inline-block; padding-left:25px;' id='uber-info'> Cost: $"
+                    + "'><p style='margin:0px; display: inline-block; padding-left:25px;' id='uber-info'> Cost: $"
                     + uberCost + "<br>Type: "
                     + uberRideType
                     + "</p></a>");
