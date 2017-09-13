@@ -94,7 +94,25 @@
         <br>
         <a href="main.html"><button class="btn btn-index btn-primary" type="button" name="submit">Submit</button></a>
     </div>
-    <script src="assets/javascript/geo.js" charset="utf-8"></script>
-    <script src="assets/javascript/submit.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        
+        $( document ).ready(function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var latStart = position.coords.latitude;
+        localStorage.setItem("latStart", latStart);
+        console.log(latStart);
+        var lngStart = position.coords.longitude;
+        localStorage.setItem("lngStart", lngStart);
+        console.log(lngStart);
+        var latStartText = latStart.toString();
+        localStorage.setItem("latStartText", latStartText);
+        console.log(latStartText);
+        var lngStartText = lngStart.toString();
+        localStorage.setItem("lngStartText", lngStartText);
+        console.log(lngStartText);
+    });
+});
+    </script>
+    <script src="assets/javascript/logic.js" charset="utf-8"></script>
 </body>
 </html>
