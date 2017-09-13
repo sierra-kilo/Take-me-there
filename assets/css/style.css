@@ -4,32 +4,32 @@ body {
     height: 100%;
 }
 
-h1 {
+.h1-index {
     font-size: 50px;
 }
 
-h2 {
+.h2-index {
     font-size: 35px;
 }
 
-.container-fluid {
+.container-fluid-index {
     background: black;
     background-color:rgba(0, 0, 0, 0.8);
 }
 
-.section {
+.section-index {
     display: block;
     color: white;
     height: 20%;
 }
 
-.btn {
+.btn-index {
     width: 25%;
     font-size: 50px;
     opacity: 1 !important;
 }
 
-.btn-group {
+.btn-group-index {
     opacity: .8;
     width: 100%;
 }

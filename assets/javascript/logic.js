@@ -45,11 +45,10 @@ function callback(results, status) {
         resultList = results
         console.log('this is the results list')
         console.log(resultList);
-        randNum = Math.floor((Math.random() * resultList.length));
-        console.log(randNum);
 
         function getRecommendation() {
-            test = results[randNum]
+            randNum = Math.floor((Math.random() * resultList.length));
+            test = results[randNum];
             console.log(test);
             if (test.rating > rating) {
                 recommendation = test
@@ -57,7 +56,7 @@ function callback(results, status) {
                 console.log(recommendation)
                 return recommendation
             } else {
-                return getRecommendation()
+                getRecommendation()
             }
         }
         recommendation = getRecommendation()
