@@ -36,6 +36,7 @@ input::-moz-focus-inner {
     margin: 0 auto
 }
 .task {
+    cursor: pointer;
     width: 20%;
     float: left;
     padding: 8px 10px;
