@@ -322,10 +322,10 @@ function callback(results, status) {
 
                     for (var k = 0; k <uberTimeResults.times.length; k++){
 
-                    if(uberRideType = uberTimeResults.prices[k].display_name === 'uberX'){
+                    if(uberRideType = uberTimeResults.times[k].display_name === 'uberX'){
 
-                        uberTime = uberTimeResults.prices[k].high_estimate;
-                        uberRideType = uberTimeResults.prices[k].display_name;
+                        uberTime = uberTimeResults.times[k].high_estimate;
+                        uberRideType = uberTimeResults.times[k].display_name;
                     }
 
 
