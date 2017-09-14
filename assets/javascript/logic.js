@@ -324,7 +324,7 @@ function callback(results, status) {
 
                     if(uberRideType = uberTimeResults.times[k].display_name === 'uberX'){
 
-                        uberTime = uberTimeResults.times[k].high_estimate;
+                        uberTime = uberTimeResults.times[k].estimate;
                         uberRideType = uberTimeResults.times[k].display_name;
                     }
 
