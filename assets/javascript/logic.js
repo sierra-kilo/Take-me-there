@@ -386,8 +386,11 @@ database.ref().on("child_added", function(snap){
 function renderRecent(){
     if (visited.length < 6) {
         var vis = visited[visited.length - 1];
-        var $rec = $("<div data-lat='" + vis.lat + "' data-lng='" + vis.lng + "' class='recentBar'>")
+        var $rec = $("<div data-lat='" + vis.lat + "' data-lng='" + vis.lng + "' class='h2-index recentBar'>")
         $rec.html(vis.name);
         $(".recents").append($rec);
+    }
+    if (visited.length == 5) {
+        $('.recents').find('div').first().remove();
     }
 }
