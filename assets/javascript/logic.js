@@ -14,6 +14,7 @@ var map;
 var infowindow;
 var recommendation;
 var randNum;
+var visited = [];
 
 
 $('.task').on('click', function(){
@@ -294,4 +295,45 @@ function createMarker(place) {
         infowindow.setContent(place.name);
         infowindow.open(map, this);
     });
+}
+
+
+
+var config = {
+    apiKey: "AIzaSyCrPtY0Ss0EUwSvhIt8LKUYxFF7KK1ZVjE",
+    authDomain: "tact-masters-you-drive.firebaseapp.com",
+    databaseURL: "https://tact-masters-you-drive.firebaseio.com",
+    projectId: "tact-masters-you-drive",
+    storageBucket: "tact-masters-you-drive.appspot.com",
+    messagingSenderId: "479313795676"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+$(".taxi").on("click", function(){
+    database.ref().push({
+        name: name,
+        lat: geoCodedlat,
+        lng: geoCodedlng
+    })
+})
+
+database.ref().on("child_added", function(snap){
+    var sv = snap.val();
+    visited.push(sv);
+    if (visited.length > 5){
+        visited.shift();
+    }
+    renderRecent();
+})
+
+function renderRecent(){
+    if (visited.length < 6) {
+        var vis = visited[visited.length - 1];
+        var $rec = $("<div data-lat='" + vis.lat + "' data-lng='" + vis.lng + "' class='recentBar'>")
+        $rec.html(vis.name);
+        $(".recents").append($rec);
+        console.log(vis.name)
+    }
 }
