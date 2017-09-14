@@ -1,3 +1,4 @@
+
 var resultList = [];
 var latStart = parseFloat(localStorage.getItem('latStart'));
 var lngStart = parseFloat(localStorage.getItem('lngStart'));
@@ -14,13 +15,15 @@ var map;
 var infowindow;
 var recommendation;
 var randNum;
+var visited = [];
 
 
 $('.task').on('click', function(){
     keyword = $(this).data('sub');
     // console.log($(this).data('sub'));
+    localStorage.setItem("keyword", keyword);
     initMap();
-})
+});
 
 $('.btn[name=submit]').click(function() {
 
@@ -45,7 +48,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: location,
-        zoom:12
+        zoom:15
     });
 
     infowindow = new google.maps.InfoWindow();
@@ -94,10 +97,15 @@ function callback(results, status) {
         isOpen = recommendation.opening_hours;
         isOpen = isOpen.open_now;
 
+
         if (isOpen === true) {
             isOpen = 'Open';
         } else {
             isOpen = 'Closed';
+        }
+
+        if (priceLevel === undefined) {
+            priceLevel = 'N/A';
         }
 
         // console.log(name);
@@ -155,8 +163,8 @@ function callback(results, status) {
             }).done(function(response) {
 
                 var lyftCostResults = response;
-                var lyftCost = lyftCostResults.cost_estimates[3].estimated_cost_cents_max;
-                var lyftRideType = lyftCostResults.cost_estimates[3].ride_type;
+                var lyftCost = "";
+                var lyftRideType = "";
                 var partnerID = "WLapzhw1SD52gflntO7MI5QyiyQCKKeS"
                 var deepLinkLyft = "https://lyft.com/ride?id=lyft&pickup[latitude]="
                     + latStartText
@@ -169,12 +177,24 @@ function callback(results, status) {
                     + "&destination[longitude]="
                     + geoCodedlng;
 
+                for (var i = 0; i < lyftCostResults.cost_estimates.length; i++){
+
+
+                    if(lyftCostResults.cost_estimates[i].ride_type === 'lyft'){
+
+                        lyftCost = lyftCostResults.cost_estimates[i].estimated_cost_cents_max;
+                        lyftRideType = lyftCostResults.cost_estimates[i].ride_type;
+                    }
+
+
+                }
+
                 console.log(lyftCost + 'cents');
                 console.log(lyftRideType);
 
-                $("#lyft").html("<a style='color:black;' href='"
+               $("#lyft").html("<a style='color:white;' href='"
                     + deepLinkLyft
-                    + "'> <p style='margin:0px; display: inline-block; padding-left:25px;' id='lyftInfo'>Cost: $"
+                    + "'> <img align='left' style='width:100px; padding: 15px 5px 0 5px; display:block;' src='assets/img/lyft-logo.png'/> <p style='margin:0px; display: inline-block; padding-left:25px;' id='lyftInfo'>Cost: $"
                     + lyftCost / 100 + "<br> Type: "
                     + lyftRideType
                     + "</p></a>");
@@ -195,9 +215,24 @@ function callback(results, status) {
                     }
                 }).done(function(response) {
 
+
+
+
                     var lyftResults = response;
-                    var lyftTime = lyftResults.eta_estimates[1].eta_seconds;
-                    var lyftRideType = lyftResults.eta_estimates[1].ride_type;
+                    var lyftTime = "";
+                    var lyftRideType = "";
+
+                    for (var h = 0; h < lyftResults.eta_estimates.length; h++){
+
+
+                    if(lyftResults.eta_estimates[h].ride_type === 'lyft'){
+
+                        lyftTime = lyftResults.eta_estimates[h].eta_seconds;
+                        lyftRideType = lyftResults.eta_estimates[h].ride_type;
+                    }
+
+
+                }
 
                     console.log(lyftTime);
                     console.log(lyftRideType);
@@ -223,8 +258,8 @@ function callback(results, status) {
             }).done(function(response) {
 
                 var uberResults = response;
-                var uberCost = uberResults.prices[7].high_estimate;
-                var uberRideType = uberResults.prices[7].display_name;
+                var uberCost = "";
+                var uberRideType = "";
                 var clientID = "WLapzhw1SD52gflntO7MI5QyiyQCKKeS"
                 var deepLink = "https://m.uber.com/ul/?client_id="
                     + clientID
@@ -241,6 +276,18 @@ function callback(results, status) {
                     + address
                     + "&product_id=a1111c8c-c720-46c3-8534-2fcdd730040d&link_text=View%20team%20roster&partner_deeplink=partner%3A%2F%2Fteam%2F9383"
 
+
+                for (var j = 0; j <uberResults.prices.length; j++){
+
+                    if(uberRideType = uberResults.prices[j].display_name === 'uberX'){
+
+                        uberCost = uberResults.prices[j].high_estimate;
+                        uberRideType = uberResults.prices[j].display_name;
+                    }
+
+
+                }
+
                 console.log(uberCost);
                 console.log(uberRideType);
 
@@ -248,7 +295,7 @@ function callback(results, status) {
 
                 $("#uber").html("<a style='color:black;' href='"
                     + deepLink
-                    + "'><p style='margin:0px; display: inline-block; padding-left:25px;' id='uber-info'> Cost: $"
+                    + "'><img align='left' style='width:100px; padding: 15px 5px 0 5px; display:block;' src='assets/img/uber-logo.png'/><p style='margin:0px; display: inline-block; padding-left:25px;' id='uber-info'> Cost: $"
                     + uberCost + "<br>Type: "
                     + uberRideType
                     + "</p></a>");
@@ -269,9 +316,20 @@ function callback(results, status) {
                     }
                 }).done(function(response) {
 
-                    var uberResults = response;
-                    var uberTime = uberResults.times[6].estimate;
-                    var uberRideType = uberResults.times[6].display_name;
+                    var uberTimeResults = response;
+                    var uberTime = "";
+                    var uberRideType = "";
+
+                    for (var k = 0; k <uberTimeResults.times.length; k++){
+
+                    if(uberRideType = uberTimeResults.prices[k].display_name === 'uberX'){
+
+                        uberTime = uberTimeResults.prices[k].high_estimate;
+                        uberRideType = uberTimeResults.prices[k].display_name;
+                    }
+
+
+                }
 
                     console.log(uberTime);
                     console.log(uberRideType);
@@ -295,3 +353,5 @@ function createMarker(place) {
         infowindow.open(map, this);
     });
 }
+
+

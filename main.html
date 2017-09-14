@@ -71,12 +71,20 @@
     </div>
     <!-- buttons -->
     <div style="clear: both;"></div>
-    <div style="background-color: black; color: white; font-size: 24px; font-weight: bold;" id="info"></div>
-    <div style="background-color: white; font-size: 24px; font-weight: bold;" class="taxi"><img align='left' style='width:100px; padding-top: 5px; display:block;' src='assets/img/uber.png'/><p id="uber"></p></div>
-    <div style="background-color: white; font-size: 24px; font-weight: bold;" class="taxi"><img align='left' style='width:100px; padding: 15px; display:block;' src='assets/img/lyft.png'/><p id="lyft"></p></div>
-    <br>
-    <br>
+    <div style="background-color: #4d394b;">
+
+    <div class="container-fluid" style="width: 80%; margin: 0 auto; padding: 10px 0 10px 0;">
+    
+    <div style="color: white; font-size: 24px; font-weight: bold; width:50%;  margin: 0px; float: left; padding-right: 25px;" id="info"></div>
+    <div style="color: white; font-size: 24px; font-weight: bold; padding-right: 25px;">
+    <button style="vertical-align:top; display:background-color: grey; color: white; font-size: 24px; font-weight: bold; display: block; margin-bottom: 10px;" id="uber" class="btn taxi">uber</button>
+    <button style="vertical-align:top; background-color: #ff00bf; color: white; font-size: 24px; font-weight: bold; " id="lyft" class="btn taxi">lyft</button>
+    </div>
+    </div>
+    </div>
+    </div>
     <div id="map"></div>
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
     <script src="assets/javascript/logic.js" charset="utf-8"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcPKxGxES3dhenheALWRDi2YymPDjEhjk&libraries=places&callback=initMap">
     </script>
