@@ -1,3 +1,8 @@
+html {
+    background: black;
+    background-color:rgba(0, 0, 0, 0.8);
+
+}
 body {
     /*background-image: url('../img/bar.jpeg');*/
     font-family: 'Raleway', sans-serif;
@@ -54,4 +59,9 @@ body {
 
 .btn-range {
     width: 33% !important;
+}
+
+.btn-bar-type {
+    width: 20%;
+    font-size: 40px;
 }

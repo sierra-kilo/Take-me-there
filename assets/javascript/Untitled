@@ -1,0 +1,29 @@
+We wanted to make a fun mobile web app, that can be used on the go or at home.  We take the thinking out of drinking!
+
+Too often we find ourselves just sitting around, on our phones, talking about going out.  No one has any suggestions, no one agrees on where to go, or you are in a new area you dont know anything about, and yelp gives you a thousand options.
+
+What we have done is come up with a solution to just visit out page, and get going.  you just need to give us some parameters, like radius, type of bar you prefer, and price range.  We will show you where, give you the info, and help you call an Uber or a Lyft straight from our page.
+
+
+Everyones personal contribution was changing.  Something someone in the group started working on wasnt necessarily what they finished working on.  I think this happened because interest in different portions of the app were coming up, and we would focus on that.
+
+For my part, i ended up working on Front end HTML and CSS with some bootstrap.  I also worked on some of the google places api javascript library.  I used local storage to get our variables from the home page, to the next. and I used a recursive function to randomly choose a bar that met the criteria we set, and if not check another.
+
+
+
+Challenges came and went, and we worked on them as in order.
+i think a big challenge for us was keeping our code organized, and merging properly.
+
+We dont really know how to use github very well, and had issues merging conflicting documents.
+
+
+
+
+
+///// road blocks
+
+- google api places didnt work with ajax
+- passing variables from one webpage to another
+- uber didnt work without a server
+- uber deep links
+-

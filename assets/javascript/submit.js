@@ -9,5 +9,8 @@ $('.btn[name=submit]').click(function() {
     var maxPrice = $("input[name='dollars']:checked").val();
     localStorage.setItem("maxPrice", maxPrice);
     console.log(maxPrice);
+    var keyword = $("input[name='keyword']:checked").val();
+    localStorage.setItem("keyword", keyword);
+
 
 });
