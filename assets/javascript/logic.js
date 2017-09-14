@@ -4,16 +4,23 @@ var lngStart = parseFloat(localStorage.getItem('lngStart'));
 var latStartText = localStorage.getItem('latStartText');
 var lngStartText = localStorage.getItem('lngStartText');
 var radius = parseInt(localStorage.getItem('radius'));
-var keyword = [];
+var keyword = localStorage.getItem('keyword');
 var name = "";
 var address = "";
 var priceLevel = parseInt(localStorage.getItem('maxPrice'));
-var rating = parseInt(localStorage.getItem('minRating'));
+var minRating = parseFloat(localStorage.getItem('minRating'));
 var isOpen = "";
 var map;
 var infowindow;
 var recommendation;
 var randNum;
+
+
+$('.task').on('click', function(){
+    keyword = $(this).data('sub');
+    // console.log($(this).data('sub'));
+    initMap();
+})
 
 $('.btn[name=submit]').click(function() {
 
@@ -30,6 +37,7 @@ $('.btn[name=submit]').click(function() {
 });
 
 
+
 function initMap() {
     var location = {};
     location.lat = latStart;
@@ -37,7 +45,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: location,
-        zoom: 10
+        zoom:12
     });
 
     infowindow = new google.maps.InfoWindow();
@@ -63,8 +71,10 @@ function callback(results, status) {
             randNum = Math.floor((Math.random() * resultList.length));
             var test = results[randNum];
             console.log(test);
-            if (test.rating > rating) {
-                recommendation = test;
+
+            if (test.rating > minRating) {
+                recommendation = test
+
                 console.log('this is the recommendation');
                 console.log(recommendation)
                 return recommendation
@@ -72,7 +82,7 @@ function callback(results, status) {
                 getRecommendation();
             }
         }
-        recommendation = getRecommendation()
+        recommendation = getRecommendation();
         // shant change 1
         // createMarker(results[randNum]);
         createMarker(recommendation);

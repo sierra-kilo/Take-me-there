@@ -16,14 +16,9 @@
 <body class="splash">
     <div class="container-fluid container-fluid-index">
         <div class="section section-index header">
-            <h1 class="h1-index">Let get you Drinking!</h1>
-            <h1 class="h2-index">
-                Choose a radius
-                <br>
-                Choose a minimum rating
-                <br>
-                Choose a maximum price range
-                <br>
+            <h1 class="h1-index">Let's get you Drinking!</h1>
+            <h2 class="h2-index">
+                We take the thinking out of drinking!
             </h2>
             <br>
         </div>
@@ -32,10 +27,7 @@
             <!-- distance buttons here -->
             <div class="btn-group btn-group-index distance-range" data-toggle="buttons">
                 <label class="btn btn-index btn-primary active">
-                    <input type="radio" value="1609" name="distance" id="option1" autocomplete="off" checked> 1 mi
-                </label>
-                <label class="btn btn-index btn-primary">
-                    <input type="radio" value="4830" name="distance" id="option2" autocomplete="off"> 3 mi
+                    <input type="radio" value="4830" name="distance" id="option1" autocomplete="off" checked> 3 mi
                 </label>
                 <label class="btn btn-index btn-primary">
                     <input type="radio" value="8050" name="distance" id="option3" autocomplete="off"> 5 mi
@@ -43,21 +35,24 @@
                 <label class="btn btn-index btn-primary">
                     <input type="radio" value="16100" name="distance" id="option4" autocomplete="off"> 10 mi
                 </label>
+                <label class="btn btn-index btn-primary">
+                    <input type="radio" value="24150" name="distance" id="option4" autocomplete="off"> 15 mi
+                </label>
             </div>
         </div>
         <br>
         <div class="section section-index min-rating">
             <h1 class="h1-index">Minimum Rating</h1>
             <!-- starts here  -->
-            <div class="btn-group btn-group-index" data-toggle="buttons">
+            <div class="btn-group btn-group-index rating-range" data-toggle="buttons">
                 <label class="btn btn-index btn-primary active" style="width: 33%">
-                    <input type="radio" value="3" name="stars" id="option2" autocomplete="off">&#11088&#11088&#11088
+                    <input type="radio" value="2.7" name="stars" id="option1" autocomplete="off" checked>&#11088&#11088&#11088
                 </label>
                 <label class="btn btn-index btn-primary" style="width: 33%">
-                    <input type="radio" value="4" name="stars" id="option3" autocomplete="off">&#11088&#11088&#11088&#11088
+                    <input type="radio" value="3.7" name="stars" id="option2" autocomplete="off">&#11088&#11088&#11088&#11088
                 </label>
                 <label class="btn btn-index btn-primary" style="width: 33%">
-                    <input type="radio" value="5" name="stars" id="option4" autocomplete="off">&#11088&#11088&#11088&#11088&#11088
+                    <input type="radio" value="4.5" name="stars" id="option3" autocomplete="off">&#11088&#11088&#11088&#11088&#11088
                 </label>
             </div>
         </div>
@@ -77,6 +72,28 @@
                 </label>
                 <label class="btn btn-index btn-primary">
                     <input type="radio" value="4" name="dollars" id="option4" autocomplete="off"> $$$$
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="section section-index max-dollars">
+            <h1 class="h1-index">Max Price</h1>
+            <!-- price range here -->
+            <div class="btn-group btn-group-index bar-type" data-toggle="buttons">
+                <label class="btn btn-bar-type btn-index btn-primary active">
+                    <input type="radio" value="dive" name="keyword" id="option1" autocomplete="off" checked> Dive
+                </label>
+                <label class="btn btn-bar-type btn-index btn-primary">
+                    <input type="radio" value="whiskey" name="keyword" id="option2" autocomplete="off"> Whiskey
+                </label>
+                <label class="btn btn-bar-type btn-index btn-primary">
+                    <input type="radio" value="cocktail" name="keyword" id="option3" autocomplete="off"> Cocktail
+                </label>
+                <label class="btn btn-bar-type btn-index btn-primary">
+                    <input type="radio" value="patio" name="keyword" id="option4" autocomplete="off"> Patio
+                </label>
+                <label class="btn btn-bar-type btn-index btn-primary">
+                    <input type="radio" value="music" name="keyword" id="option5" autocomplete="off"> Music
                 </label>
             </div>
         </div>
