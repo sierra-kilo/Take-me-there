@@ -48,7 +48,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: location,
-        zoom:15
+        zoom:10
     });
 
     infowindow = new google.maps.InfoWindow();
