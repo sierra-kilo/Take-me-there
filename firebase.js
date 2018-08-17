@@ -1,6 +1,6 @@
-$(document).ready(function(){ 
+$(document).ready(function(){
   var config = {
-      apiKey: "AIzaSyCrPtY0Ss0EUwSvhIt8LKUYxFF7KK1ZVjE",
+      apiKey: "AIzaSyD2xSa6BNQRyT5tJFK6Hhf6RPJzGrN35BI",
       authDomain: "tact-masters-you-drive.firebaseapp.com",
       databaseURL: "https://tact-masters-you-drive.firebaseio.com",
       projectId: "tact-masters-you-drive",
